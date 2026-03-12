@@ -1,1 +1,0 @@
-{"version":3,"file":"photo.providers.js","sourceRoot":"","sources":["../../ksa/photo.providers.ts"],"names":[],"mappings":";;;AAEA,iDAAuC;AAE1B,QAAA,cAAc,GAAG;IAC5B;QACE,OAAO,EAAE,kBAAkB;QAC3B,UAAU,EAAE,CAAC,UAAsB,EAAE,EAAE,CAAC,UAAU,CAAC,aAAa,CAAC,oBAAK,CAAC;QACvE,MAAM,EAAE,CAAC,aAAa,CAAC;KACxB;CACF,CAAC"}
