@@ -1,11 +1,21 @@
 import { Injectable } from '@nestjs/common';
 import { CreateAccountDto } from './dto/create-account.dto';
 import { UpdateAccountDto } from './dto/update-account.dto';
+import { Account } from './entities/account.entity';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { RedisQueryResultCache } from 'typeorm/cache/RedisQueryResultCache.js';
 
 @Injectable()
 export class AccountService {
-  create(createAccountDto: CreateAccountDto) {
-    return 'This action adds a new account';
+  constructor(
+    @InjectRepository(Account)
+    private readonly accountRepository: Repository<Account>,
+   ){}
+
+  async create(createAccountDto: CreateAccountDto){
+    const newAccount = this.accountRepository.create(createAccountDto);
+    return await this.accountRepository.save(newAccount)
   }
 
   findAll() {
