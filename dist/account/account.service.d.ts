@@ -6,8 +6,8 @@ export declare class AccountService {
     private readonly accountRepository;
     constructor(accountRepository: Repository<Account>);
     create(createAccountDto: CreateAccountDto): Promise<Account>;
-    findAll(): string;
-    findOne(id: number): string;
-    update(id: number, updateAccountDto: UpdateAccountDto): string;
-    remove(id: number): string;
+    findAll(): Promise<Account[]>;
+    findOne(id: number): Promise<Account | null>;
+    update(id: number, updateAccountDto: UpdateAccountDto): Promise<Account>;
+    remove(id: number): Promise<void>;
 }

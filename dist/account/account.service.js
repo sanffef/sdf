@@ -27,16 +27,21 @@ let AccountService = class AccountService {
         return await this.accountRepository.save(newAccount);
     }
     findAll() {
-        return `This action returns all account`;
+        return this.accountRepository.find();
     }
     findOne(id) {
-        return `This action returns a #${id} account`;
+        return this.accountRepository.findOneBy({ id });
     }
-    update(id, updateAccountDto) {
-        return `This action updates a #${id} account`;
+    async update(id, updateAccountDto) {
+        await this.accountRepository.update(id, updateAccountDto);
+        const updatedAccount = await this.accountRepository.findOneBy({ id });
+        if (!updatedAccount) {
+            throw new common_1.NotFoundException(`Account #${id} not found`);
+        }
+        return updatedAccount;
     }
-    remove(id) {
-        return `This action removes a #${id} account`;
+    async remove(id) {
+        await this.accountRepository.delete(id);
     }
 };
 exports.AccountService = AccountService;

@@ -32,3 +32,4 @@ export class AccountController {
     return this.accountService.remove(+id);
   }
 }
+

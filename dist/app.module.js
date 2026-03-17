@@ -12,6 +12,7 @@ const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const typeorm_1 = require("@nestjs/typeorm");
 const account_module_1 = require("./account/account.module");
+const account_entity_1 = require("./account/entities/account.entity");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -24,7 +25,7 @@ exports.AppModule = AppModule = __decorate([
                 username: 'student',
                 password: 'student',
                 database: 'local_project',
-                entities: [],
+                entities: [account_entity_1.Account],
                 synchronize: true,
             }), account_module_1.AccountModule],
         controllers: [app_controller_1.CatsController],

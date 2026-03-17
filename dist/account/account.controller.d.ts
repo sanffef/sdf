@@ -5,8 +5,8 @@ export declare class AccountController {
     private readonly accountService;
     constructor(accountService: AccountService);
     create(createAccountDto: CreateAccountDto): Promise<import("./entities/account.entity").Account>;
-    findAll(): string;
-    findOne(id: string): string;
-    update(id: string, updateAccountDto: UpdateAccountDto): string;
-    remove(id: string): string;
+    findAll(): Promise<import("./entities/account.entity").Account[]>;
+    findOne(id: string): Promise<import("./entities/account.entity").Account | null>;
+    update(id: string, updateAccountDto: UpdateAccountDto): Promise<import("./entities/account.entity").Account>;
+    remove(id: string): Promise<void>;
 }

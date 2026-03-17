@@ -1,13 +1,26 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AccountService } from './account.service';
+import { getRepositoryToken } from '@nestjs/typeorm';
+import { Account } from './entities/account.entity';
 
 describe('AccountService', () => {
   let service: AccountService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [AccountService],
-    }).compile();
+      providers: [
+      AccountService,
+      {
+        provide: getRepositoryToken(Account),
+        useValue: {
+          save: jest.fn(),
+          find: jest.fn(),
+          findOneBy: jest.fn(),
+          delete: jest.fn(),
+        },
+      },
+    ],
+  }).compile();
 
     service = module.get<AccountService>(AccountService);
   });
