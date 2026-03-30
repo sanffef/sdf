@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { AccountModule } from './account/account.module';
 import { Account } from './account/entities/account.entity';
+import { PollsModule } from './polls/polls.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -15,7 +16,7 @@ import { Account } from './account/entities/account.entity';
     database: 'local_project',
     entities: [Account],
     synchronize: true,
-  }), AccountModule],
+  }), AccountModule, PollsModule],
   controllers: [CatsController],
   providers: [AppService],
 })
